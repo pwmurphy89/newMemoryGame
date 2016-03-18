@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+
+	#box {
+		perspective: 600px;
+		perspective-origin: 0% 0%;
+		width: 200px;
+		margin: 100px;
+		border: 1px solid black;
+	}
+
+	#red-box {
+		background-color: red;
+		width: 200px;
+		height: 200px;
+
+		transform: rotateX(45deg);
+		transition: all 3s ease;
+
+}
+#red-box.flip{
+	transform:rotateX(-45deg);
+}
+
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="red-box"></div>
+
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#red-box").click(function() {
+		$(this).toggleClass("flip");
+	})
+});
+
+</script>
+</body>
+</html>
