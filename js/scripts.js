@@ -42,20 +42,21 @@ $(document).ready(function() {
 		}
 		$("#button-bucket").toggle();
 		gameTiles = cards.slice(0, gridSize/2);
+
 		gridArray = $.merge(gameTiles, gameTiles);
+		shuffle();
 
 
 		//shuffle here
 		//place here
 	function shuffle() {
-		var numberOfTimesToShuffle = 20;
-		for(i=1; i<numberOfTimesToShuffle;i++) {
-			card1 = Math.floor(Math.random() * gridSize);
-			card2 = Math.floor(Math.random() * gridSize);
+		for(i=1; i<10;i++) {
+			card1 = Math.floor(Math.random() * gridArray.length);
+			card2 = Math.floor(Math.random() * gridArray.length);
 			if(card1 !== card2) {
-				temp = cards[card1];
-				cards[card1] = cards[card2];
-				cards[card2] = temp;
+				temp = gridArray[card1];
+				gridArray[card1] = gridArray[card2];
+				gridArray[card2] = temp;
 			}
 		}
 	}
@@ -77,8 +78,8 @@ $(document).ready(function() {
 
 		$(".mg-tile").click(function() {
 			$(this).find(".mg-tile-inner").addClass("flipped");
-
 			if ($(".flipped.unmatched").length == 2){
+
 				moves++;
 				$("#move-counter").html(moves);
 			}
@@ -99,7 +100,8 @@ $(document).ready(function() {
 					wins++;
 					$("#wins-counter").html(wins);
 					alert("You won!");
-					$("#move-counter").html(0);
+					moves = 0;
+					$("#move-counter").html(moves);
 					$(".mg-tile").remove();
 					$("#button-bucket").toggle();
 
