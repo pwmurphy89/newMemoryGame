@@ -80,6 +80,8 @@ $(document).ready(function() {
 
 			if ($(".flipped.unmatched").length == 2){
 				moves++;
+				$("#move-counter").html(moves);
+			}
 				var upCards = $(".flipped.unmatched img");
 				if (upCards[0].src == upCards[1].src){
 					$(".flipped.unmatched").addClass("matched");
@@ -89,23 +91,21 @@ $(document).ready(function() {
 							$(".flipped.unmatched").removeClass("flipped");
 						},1000);
 					}
+					// $(".flipped.unmatched").addClass("unmatched");
+					// $(".flipped.unmatched").removeClass("matched");
+					// $(".mg-tile-inner").removeClass("flipped");
+
 				if($(".flipped.matched").length == gridArray.length){
-					alert("You won!");
-					shuffle();
 					wins++;
-					$(".flipped.unmatched").addClass("unmatched");
-					$(".flipped.unmatched").removeClass("matched");
-					$(".mg-tile-inner").removeClass("flipped");
-					$("#move-counter").html("0");
-
-	
-				}
+					$("#wins-counter").html(wins);
+					alert("You won!");
+					$("#move-counter").html(0);
+					$(".mg-tile").remove();
+					$("#button-bucket").toggle();
 
 				}
-			
-				$("#move-counter").html(moves);
-				$("#wins-counter").html(wins);
-		});
+
+				});
 
 						
 		
