@@ -47,6 +47,18 @@ $(document).ready(function() {
 
 		//shuffle here
 		//place here
+	function shuffle() {
+		var numberOfTimesToShuffle = 20;
+		for(i=1; i<numberOfTimesToShuffle;i++) {
+			card1 = Math.floor(Math.random() * gridSize);
+			card2 = Math.floor(Math.random() * gridSize);
+			if(card1 !== card2) {
+				temp = cards[card1];
+				cards[card1] = cards[card2];
+				cards[card2] = temp;
+			}
+		}
+	}
 
 		for (var i = 0; i < gridArray.length; i++){
 			var html = "<div class ='mg-tile'>";
@@ -61,7 +73,7 @@ $(document).ready(function() {
 
 		setTimeout(function() {
 			$(".mg-tile-inner").removeClass("flipped");
-		},2000);
+		},1500);
 
 		$(".mg-tile").click(function() {
 			$(this).find(".mg-tile-inner").addClass("flipped");
@@ -78,17 +90,23 @@ $(document).ready(function() {
 						},1000);
 					}
 				if($(".flipped.matched").length == gridArray.length){
-					alert("you won!");
-					wins++
+					alert("You won!");
+					shuffle();
+					wins++;
+					$(".flipped.unmatched").addClass("unmatched");
+					$(".flipped.unmatched").removeClass("matched");
+					$(".mg-tile-inner").removeClass("flipped");
+					$("#move-counter").html("0");
+
+	
 				}
 
 				}
+			
 				$("#move-counter").html(moves);
 				$("#wins-counter").html(wins);
-			
-
-
 		});
+
 						
 		
 	});
