@@ -44,7 +44,7 @@ $(document).ready(function() {
 		gameTiles = cards.slice(0, gridSize/2);
 
 		gridArray = $.merge(gameTiles, gameTiles);
-		shuffle();
+		//shuffle();
 
 
 		//shuffle here
@@ -99,11 +99,18 @@ $(document).ready(function() {
 				if($(".flipped.matched").length == gridArray.length){
 					wins++;
 					$("#wins-counter").html(wins);
-					alert("You won!");
-					moves = 0;
-					$("#move-counter").html(moves);
-					$(".mg-tile").remove();
-					$("#button-bucket").toggle();
+					var response = prompt("You won! Play again?");
+						if (response == "yes"){
+							reset();
+						}else{
+							if (wins == 1) {
+								alert("OK, you completed 1 game!");
+							}else{
+								alert("OK!, You completed" + wins + " games!");
+							}
+						}
+
+
 
 				}
 
@@ -112,6 +119,16 @@ $(document).ready(function() {
 						
 		
 	});
+					function reset() {
+					moves = 0;
+					$("#move-counter").html(moves);
+					$(".mg-tile").remove();
+					$("#button-bucket").toggle();
+				}
+
+				function quit() {
+
+				}
 
 
 
