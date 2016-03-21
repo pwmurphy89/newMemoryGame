@@ -44,7 +44,7 @@ $(document).ready(function() {
 		gameTiles = cards.slice(0, gridSize/2);
 
 		gridArray = $.merge(gameTiles, gameTiles);
-		//shuffle();
+		shuffle();
 
 
 		//shuffle here
